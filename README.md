@@ -10,20 +10,20 @@ It can uncompress file:
 
 #### Clone the repo
 
-```
+```bash
 git clone https://github.com/pimlock/s3-uncompressor-sam.git
 cd s3-uncompressor-sam
 ```
 
 #### Install dev dependencies (make sure you are using Python3)
 
-```
+```bash
 pip install -r dev-requirements.txt
 ```
 
 #### Create Virtualenv:
 
-```
+```bash
 virtualenv venv
 source venv/bin/activate
 ```
@@ -34,7 +34,7 @@ This step requires your AWS credentials to be set up:
 * as `export AWS_ACCESS_KEY_ID=""; export AWS_SECRET_ACCESS_KEY=""`
 * stored in `~/.aws/credentials`
 
-```
+```bash
 # this bucket is where the zip file with AWSLambda code will be uploaded (it's used by CloudFormation to deploy Lambda)
 export CODE_DEPLOYMENT_BUCKET=my-bucket
 # bucket to which contents of compressed file will be written to (if this value is empty - contents will be written to the source bucket)
