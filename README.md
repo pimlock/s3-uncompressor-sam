@@ -34,6 +34,12 @@ This step requires your AWS credentials to be set up:
 * as `export AWS_ACCESS_KEY_ID=""; export AWS_SECRET_ACCESS_KEY=""`
 * stored in `~/.aws/credentials`
 
+Create required S3 buckets:
+
+1. Where CloudFormation will upload Lambda code to (`CODE_DEPLOYMENT_BUCKET`)
+2. Where Lambda will uncompress files to (`UNCOMPRESSOR_DESTINATION_BUCKET`). 
+    * You can skip this step, in which case files will be uncompressed to the bucket where they were uploaded.
+
 ```bash
 # this bucket is where the zip file with AWSLambda code will be uploaded (it's used by CloudFormation to deploy Lambda)
 export CODE_DEPLOYMENT_BUCKET=my-bucket
