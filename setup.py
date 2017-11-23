@@ -17,5 +17,5 @@ setup(
     tests_require=['pytest'],
     zip_safe=False,
     author='Piotr Mlocek',
-    url='https://github.com/pimlock/s3-uncompressor'
+    url='https://github.com/pimlock/s3-uncompressor-sam'
 )
