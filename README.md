@@ -2,9 +2,23 @@
 
 [SAM](https://github.com/awslabs/serverless-application-model) application that uncompresses files uploaded to S3 bucket.
 
-It can uncompress file:
-* to the same bucket to which file was uploaded
-* other bucket specified in the environment variable in the Lambda function (can be adjusted as a CloudFormation parameter) 
+## Why?
+
+Some of the use cases:
+
+* uploading a lot of small files to S3 (e.g. if hosting website from S3)
+  * instead upload zipped file containing all of the files and get it unzipped when uploaded
+* low network bandwidth (especially when files are highly-compressable)
+
+## How it works?
+
+* you upload zipped file to S3 bucket, e.g. to the location `s3://bucket_1/prefix_1/prefix_2/my-zip-file.zip`
+* after file is uploaded to S3, notification is sent that triggers Lambda function
+* Lambda function checks whether it can uncompress uploaded file
+* if yes, it will download the file and uncompress it to the location `s3://destination_bucket/prefix_1/prefix_2/my-zip-file/<contents of zipfile>`
+    * where `destination_bucket` can be:
+        * any bucket defined in Lambda function's `DESTINATION_BUCKET` ENV variable
+        * `bucket_1` (if `DESTINATION_BUCKET` is either not set or set to empty string) 
 
 ## Setup
 
